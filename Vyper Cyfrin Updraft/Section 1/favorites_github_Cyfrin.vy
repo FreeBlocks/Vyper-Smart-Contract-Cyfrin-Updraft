@@ -32,6 +32,13 @@ def store(new_number: uint256):
 def retrieve() -> uint256:
     return self.my_favorite_number
 
+@external
+def add():
+    """
+    Adds 1 to the current value of my_favorite_number.
+    """
+    self.my_favorite_number = self.my_favorite_number + 1
+
 @external 
 def add_person(name: String[100], favorite_number: uint256):
     # Add favorite number to the numbers list
@@ -45,3 +52,5 @@ def add_person(name: String[100], favorite_number: uint256):
     self.name_to_favorite_number[name] = favorite_number
 
     self.index = self.index + 1
+
+

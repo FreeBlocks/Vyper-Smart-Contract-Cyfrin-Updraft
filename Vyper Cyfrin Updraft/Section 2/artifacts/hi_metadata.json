@@ -1,0 +1,45 @@
+{
+	"compiler": {
+		"version": "0.8.18+commit.87f61d96"
+	},
+	"language": "Solidity",
+	"output": {
+		"abi": [],
+		"devdoc": {
+			"kind": "dev",
+			"methods": {},
+			"version": 1
+		},
+		"userdoc": {
+			"kind": "user",
+			"methods": {},
+			"version": 1
+		}
+	},
+	"settings": {
+		"compilationTarget": {
+			"Vyper Cyfrin Updraft/Section 2/hi.sol": "hi"
+		},
+		"evmVersion": "paris",
+		"libraries": {},
+		"metadata": {
+			"bytecodeHash": "ipfs"
+		},
+		"optimizer": {
+			"enabled": false,
+			"runs": 200
+		},
+		"remappings": []
+	},
+	"sources": {
+		"Vyper Cyfrin Updraft/Section 2/hi.sol": {
+			"keccak256": "0xdbeed007af20340705ca53201d31d86990ae13d652f6e5d60720459e297138c5",
+			"license": "MIT",
+			"urls": [
+				"bzz-raw://9c58441218138c40c4f8ac01aa4539366e1343113986dab7eb2c903c36f19f4e",
+				"dweb:/ipfs/QmZkFDb67aPAuYTiHPrT2nnN7qzw8mx9WPuSrhD47oG8Pg"
+			]
+		}
+	},
+	"version": 1
+}

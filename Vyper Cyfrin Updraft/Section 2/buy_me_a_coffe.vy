@@ -14,10 +14,13 @@ interface AggregatorV3Interface:
 
 minimum_usd: uint256
 
+price_feed: AggregatorV3Interface # 0x694AA1769357215DE4FAC081bf1f309aDC325306 este contrato solo funciona en sepolia
+
 #constructor
 @deploy
-def __init__():
+def __init__(price_feed_address: address):
     self.minimum_usd = 5
+    self.price_feed = AggregatorV3Interface(price_feed_address)
 
 
 @external 
@@ -37,12 +40,21 @@ def withdraw():
     pass
 
 @internal 
-def _get_eth_to_usd_rate():
-    # address: 0x694AA1769357215DE4FAC081bf1f309aDC325306
-    # ABI: ??
-    pass
+def _get_eth_to_usd_rate(eth_amount: uint256):
+# Chris sent us 0.01 for us to buy a coffe. Is that more or less than 5$
+   price: int256 = staticcall self.price_feed.latestAnswer() #244045000000
+   # 8 decimals
+   # $3,021
+   # eth_amount_to_usd
+   eth_price: uint256 = convert(price, uint256) * (10 ** 10) #244045000000 -> 2440450000000000000000
+    # ETH : 110000000000000000
+    # $ / ETH: 2440450000000000000000
+    # $
+    eth_amount_in_usd: uint256 = (eth_amount * eth_price) // 1 * (10 ** 18)
+    return eth_amount_in_usd
 
 @external 
-def get_price():
-    priced_feed: AggregatorV3Interface= AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306)
-    return price_feed.latestAnswer()
+@view 
+def get_price() -> int256:
+    price_feed: AggregatorV3Interface= AggregatorV3Interface(0x694AA1769357215DE4FAC081bf1f309aDC325306)
+    return staticcall price_feed.latestAnswer()
